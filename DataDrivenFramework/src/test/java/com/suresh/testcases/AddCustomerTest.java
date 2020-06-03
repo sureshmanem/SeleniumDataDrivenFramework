@@ -24,6 +24,7 @@ public class AddCustomerTest extends TestBase {
 			throw new SkipException("Skipping the test case as the Run mode for data set is NO");
 		}
 		
+		log.debug("Inside Add Customer Test");
 		
 		click("addCustBtn_CSS");
 		type("firstname_CSS",data.get("firstname"));
@@ -37,6 +38,8 @@ public class AddCustomerTest extends TestBase {
 		alert.accept();
 		
 		Thread.sleep(2000);
+		
+		log.debug("Completed Add Customer Test");
 		
 	}
 	

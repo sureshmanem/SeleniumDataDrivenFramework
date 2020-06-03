@@ -51,9 +51,11 @@ public class TestBase {
 	public static ExtentTest test;
 	public static String browser;
 
-	@BeforeMethod
+	
 	@BeforeSuite
 	public void setUp() {
+		
+		log.debug("Test Execution Started");
 
 		if (driver == null) {
 
@@ -61,14 +63,12 @@ public class TestBase {
 				fis = new FileInputStream(
 						System.getProperty("user.dir") + "/src/test/resources/properties/Config.properties");
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
 				config.load(fis);
 				log.debug("Config file loaded !!!");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -76,26 +76,21 @@ public class TestBase {
 				fis = new FileInputStream(
 						System.getProperty("user.dir") + "/src/test/resources/properties/OR.properties");
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
 				OR.load(fis);
 				log.debug("OR file loaded !!!");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 			
 			
 			if(System.getenv("browser")!=null && !System.getenv("browser").isEmpty()){
-				
 				browser = System.getenv("browser");
 			}else{
-				
 				browser = config.getProperty("browser");
-				
 			}
 			
 			config.setProperty("browser", browser);
@@ -103,15 +98,15 @@ public class TestBase {
 			if (config.getProperty("browser").equals("firefox")) {
 				System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/src/test/resources/executables/geckodriver");
 				driver = new FirefoxDriver();
-
+				log.debug("Firefox Launched");
 			} else if (config.getProperty("browser").equals("chrome")) {
-
 				System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") + "/src/test/resources/executables/chromedriver.exe");
 				driver = new ChromeDriver();
 				log.debug("Chrome Launched !!!");
 			} else if (config.getProperty("browser").equals("ie")) {
 				System.setProperty("webdriver.ie.driver",System.getProperty("user.dir") + "/src/test/resources/executables/IEDriverServer.exe");
 				driver = new InternetExplorerDriver();
+				log.debug("IE Launched !!!");
 			}
 
 			driver.get(config.getProperty("testsiteurl"));
@@ -187,11 +182,8 @@ public class TestBase {
 	public static void verifyEquals(String expected, String actual) throws IOException {
 
 		try {
-
 			AssertJUnit.assertEquals(actual, expected);
-
 		} catch (Throwable t) {
-
 			TestUtil.captureScreenshot();
 			// ReportNG
 			Reporter.log("<br>" + "Verification failure : " + t.getMessage() + "<br>");
@@ -202,19 +194,15 @@ public class TestBase {
 			// Extent Reports
 			test.log(LogStatus.FAIL, " Verification failed with exception : " + t.getMessage());
 			test.log(LogStatus.FAIL, test.addScreenCapture(TestUtil.screenshotName));
-
 		}
-
 	}
 
-	@AfterMethod
+	
 	@AfterSuite
 	public void tearDown() {
-
 		if (driver != null) {
 			driver.quit();
 		}
-
-		log.debug("test execution completed !!!");
+		log.debug("Test Execution Completed !!!");
 	}
 }

@@ -7,21 +7,23 @@
 		<listener class-name="com.suresh.listeners.CustomListeners" />
 	</listeners>
 
-
+	<!--
 	<test name="Hello Test">
 		<classes>
 			<class name="com.suresh.rough.HelloTest" />
 		</classes>
 	</test> 
+	-->
 	
-	<!--
+	
 	<test name="Bank Manager Login Test">
 		<classes>
 			<class name="com.suresh.testcases.BankManagerLoginTest" />
 		</classes>
 	</test> 
-
 	
+	
+
 	<test name="Add Customer Test">
 		<classes>
 			<class name="com.suresh.testcases.AddCustomerTest" />
@@ -33,6 +35,5 @@
 			<class name="com.suresh.testcases.OpenAccountTest" />
 		</classes>
 	</test> 
-	 -->
 	 
 </suite> <!-- Suite -->
