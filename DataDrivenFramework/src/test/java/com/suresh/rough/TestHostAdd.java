@@ -18,7 +18,8 @@ public class TestHostAdd {
 				+ ":8080/job/DataDrivenLiveProject/Extent_Reports/";
 		System.out.println(messageBody);
 		
-		mail.sendMail(TestConfig.server, TestConfig.from, TestConfig.to, TestConfig.subject, messageBody);
+		//mail.sendMail(TestConfig.server, TestConfig.from, TestConfig.to, TestConfig.subject, messageBody);
+		System.out.println("Send Email Code Commented");
 
 	}
 

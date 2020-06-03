@@ -20,6 +20,7 @@ import javax.mail.internet.MimeMultipart;
 
 public class MonitoringMail
 {
+	/*
 	//public static void sendMail(String mailServer, String from,String username, String password,String port, String[] to, String subject, String messageBody, String attachmentPath, String attachmentName) throws MessagingException, AddressException
 	public void sendMail(String mailServer, String from, String[] to, String subject, String messageBody) throws MessagingException, AddressException
 	{
@@ -96,5 +97,6 @@ public class MonitoringMail
 	        return new PasswordAuthentication(username, password);
 	    }
 	}
+	*/
 	
 }

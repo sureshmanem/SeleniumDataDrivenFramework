@@ -45,8 +45,7 @@ public class TestBase {
 	public static Properties OR = new Properties();
 	public static FileInputStream fis;
 	public static Logger log = Logger.getLogger("devpinoyLogger");
-	public static ExcelReader excel = new ExcelReader(
-			System.getProperty("user.dir") + "\\src\\test\\resources\\excel\\testdata.xlsx");
+	public static ExcelReader excel = new ExcelReader(System.getProperty("user.dir") + "/src/test/resources/excel/testdata.xlsx");
 	public static WebDriverWait wait;
 	public ExtentReports rep = ExtentManager.getInstance();
 	public static ExtentTest test;
@@ -60,7 +59,7 @@ public class TestBase {
 
 			try {
 				fis = new FileInputStream(
-						System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\Config.properties");
+						System.getProperty("user.dir") + "/src/test/resources/properties/Config.properties");
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -75,7 +74,7 @@ public class TestBase {
 
 			try {
 				fis = new FileInputStream(
-						System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\OR.properties");
+						System.getProperty("user.dir") + "/src/test/resources/properties/OR.properties");
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -100,27 +99,19 @@ public class TestBase {
 			}
 			
 			config.setProperty("browser", browser);
-			
-			
-			
 
 			if (config.getProperty("browser").equals("firefox")) {
-
-				// System.setProperty("webdriver.gecko.driver", "gecko.exe");
+				System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/src/test/resources/executables/geckodriver");
 				driver = new FirefoxDriver();
 
 			} else if (config.getProperty("browser").equals("chrome")) {
 
-				System.setProperty("webdriver.chrome.driver",
-						System.getProperty("user.dir") + "\\src\\test\\resources\\executables\\chromedriver.exe");
+				System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") + "/src/test/resources/executables/chromedriver.exe");
 				driver = new ChromeDriver();
 				log.debug("Chrome Launched !!!");
 			} else if (config.getProperty("browser").equals("ie")) {
-
-				System.setProperty("webdriver.ie.driver",
-						System.getProperty("user.dir") + "\\src\\test\\resources\\executables\\IEDriverServer.exe");
+				System.setProperty("webdriver.ie.driver",System.getProperty("user.dir") + "/src/test/resources/executables/IEDriverServer.exe");
 				driver = new InternetExplorerDriver();
-
 			}
 
 			driver.get(config.getProperty("testsiteurl"));
